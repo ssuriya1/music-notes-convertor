@@ -35,7 +35,6 @@
         top: 20%;
         left: 50%;
         transform: translate(-50%, -50%);
-        text-transform: uppercase;
     }
 
     .output {
@@ -72,23 +71,24 @@
     function convert() {
         var notes = "";
         notes = document.getElementById("notes").value;
-        var outputNote = [];
-        if (notes == "C")
-            outputNote == "4";
-        else if (notes == "D")
-            outputNote == "-4";
-        else if (notes == "E")
-            outputNote == "5";
-        else if (notes == "F")
-            outputNote == "-5";
-        else if (notes == "G")
-            outputNote == "6";
-        else if (notes == "A")
-            outputNote == "-6";
-        else if (notes == "B")
-            outputNote == "7";
-        else outputNote == "-7";
-        document.getElementById("output").value = outputNote;
+        var arr = [];
+        arr.push(notes.split(''));
+        for (i = 0; i <= arr.length; i++) {
+            if (arr[i] == 'C' || arr[i] == 'c')
+                document.getElementById("output").value += '4';
+            if (arr[i] == 'D' || arr[i] == 'd')
+                document.getElementById("output").value += '-4';
+            if (arr[i] == 'E' || arr[i] == 'e')
+                document.getElementById("output").value += '5';
+            if (arr[i] == 'F' || arr[i] == 'f')
+                document.getElementById("output").value += '-5';
+            if (arr[i] == 'G' || arr[i] == 'g')
+                document.getElementById("output").value += '6';
+            if (arr[i] == 'A' || arr[i] == 'a')
+                document.getElementById("output").value += '-6';
+            if (arr[i] == 'B' || arr[i] == 'b')
+                document.getElementById("output").value += '7';
+        }
     }
 </script>
 
