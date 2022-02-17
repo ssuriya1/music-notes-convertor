@@ -20,10 +20,10 @@
 
     .header {
         color: brown;
-        position: absolute;
+        position: relative;
         width: 300px;
         text-align: center;
-        top: 5%;
+        top: 30px;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 26px;
@@ -31,9 +31,9 @@
 
     .notes {
         width: 80%;
-        padding: 3%;
-        position: absolute;
-        top: 20%;
+        padding: 2%;
+        position: relative;
+        top: 30px;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 24px;
@@ -41,12 +41,13 @@
 
     .output {
         resize: none;
-        width: 90%;
-        height: 50%;
+        width: 80%;
+        height: 40%;
         position: absolute;
-        top: 40%;
-        left: 5%;
-        padding: 1%;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2%;
         font-size: 24px;
     }
 
@@ -65,7 +66,7 @@
     .copy {
         position: absolute;
         cursor: pointer;
-        top: 95%;
+        top: 85%;
         left: 50%;
         font-size: 20px;
         width: 100px;
@@ -77,36 +78,19 @@
 <body>
     <h1 class="header">Mouth Organ Notes Conveter</h1>
     <input type="text" class="notes" id="notes" autofocus>
-    <button class="convert" onclick="convert()">Convert</button>
+    <button class="convert" onclick="converter()">Convert</button>
     <textarea class="output" id="output"></textarea>
     <button class="copy" onclick="copy()">copy</button>
 </body>
 
 <script>
-    function convert() {
-        var notes = "";
-        notes = document.getElementById("notes").value;
-        var arr = [];
-        arr.push(notes.split(''));
-        console.log(arr);
-        var outputNotes = "";
-        for (i = 0; i <= arr.length; i++) {
-            if (arr[i] == 'C' || arr[i] == 'c')
-                outputNotes = "4";
-            if (arr[i] == 'D' || arr[i] == 'd')
-                outputNotes = "-4";
-            if (arr[i] == 'E' || arr[i] == 'e')
-                outputNotes = "5";
-            if (arr[i] == 'F' || arr[i] == 'f')
-                outputNotes = "-5";
-            if (arr[i] == 'G' || arr[i] == 'g')
-                outputNotes = "6";
-            if (arr[i] == 'A' || arr[i] == 'a')
-                outputNotes = "-6";
-            if (arr[i] == 'B' || arr[i] == 'b')
-                outputNotes = "7";
-        }
-        document.getElementById("output").innerHTML += outputNotes;
+    function converter() {
+        var str = document.getElementById("notes").value; 
+        str = str.replace(/c/gi, " 4"); //replaces the value line by line
+        str = str.replace(/d/gi, " -4");
+        str = str.replace(/e/gi, " 5");
+        str = str.replace(/f/gi, " -5");
+        document.getElementById("output").value = str;
     }
     function copy() {
         var range = document.createRange();
